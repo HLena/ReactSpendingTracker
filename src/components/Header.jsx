@@ -1,8 +1,24 @@
+import { ControlBudget, NewBudget } from "./index";
 
-const Header = () => {
+const Header = ({
+  budget,
+  setBudget,
+  isValidBudget,
+  setIsValidBudget
+}) => {
   return (
-    <header className="bg-teal-500 text-white font-extrabold uppercase text-center h-3/6">
-        <h1 className="py-12 text-2xl">Planificador de gastos</h1>
+    <header className="bg-teal-500 h-3/6 relative flex justify-center text-gray-700">
+        <h1 className="py-12 text-2xl uppercase text-white">Planificador de gastos</h1>
+        {
+          !isValidBudget
+          ?
+            <NewBudget 
+              budget={budget}
+              setBudget={setBudget}
+              setIsValidBudget = { setIsValidBudget }
+            />
+          : <ControlBudget budget={budget}/>
+        }
     </header>
   )
 }
