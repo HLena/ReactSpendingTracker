@@ -29,11 +29,11 @@ const NewBudget = ({
         }
           <form className="m-auto my-4" onSubmit={handleBudget}>
               <div className="flex flex-col text-center gap-2 mb-2">
-                  <label className="text-md leading-6 text-teal-500  font-extrabold">Definir Presupuesto</label>
+                  <label className="text-md leading-6 text-teal-500  font-extrabold uppercase">Definir Presupuesto</label>
                   <input
-                      className="w-full rounded-md border-0 py-1.5 pl-5 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-200 sm:text-sm sm:leading-6"
+                      className="w-full border rounded-md  py-1.5 px-2 outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-200 sm:text-sm"
                       type="number"
-                      placeholder="añadir presupuesto"
+                      placeholder="Añadir presupuesto"
                       value={budget}
                       onChange={ (e) => setBudget(Number(e.target.value))}
                       />
@@ -42,7 +42,7 @@ const NewBudget = ({
               <input 
                 type="submit"
                 value="Añadir"
-                className="w-full bg-teal-500 text-white p-1.5 rounded-md font-semibold uppercase"
+                className="w-full bg-teal-500 text-white p-1.5 rounded-md font-semibold uppercase text-sm"
               />
           </form>
       </div>
