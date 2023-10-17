@@ -89,9 +89,10 @@ const Modal = ({onClose, onSaveExpense, availableBudget}) => {
                                     <option value="">Seleccione una categoría</option>
                                     <option value="food">Comida</option>
                                     <option value="house">Hogar</option>
-                                    <option value="many things">Cosas Varias</option>
-                                    <option value="hobbie">Hobbie</option>
-                                    <option value="healthy">Salud</option>
+                                    <option value="saving">Ahorro</option>
+                                    <option value="expenses">Gastos</option>
+                                    <option value="leisure">Ocio</option>
+                                    <option value="health">Salud</option>
                                     <option value="suscriptions">Suscriptiones</option>
                                 </select>
                             </fieldset>
