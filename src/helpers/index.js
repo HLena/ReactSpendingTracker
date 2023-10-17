@@ -3,3 +3,11 @@ export const generateId = () => {
     const date = Date.now().toString(36);
     return random + date;
 }
+
+export const formatDate = (date) => {
+    return date.toLocaleDateString('es-ES', {
+        year: 'numeric',
+        month: 'long',
+        day: '2-digit'
+      })
+}
