@@ -18,7 +18,8 @@ function App() {
       ...expenses,
       {
         ...newExpense,
-        id: generateId()
+        id: generateId(),
+        date: new Date()
       }
     ])
   }
@@ -39,7 +40,7 @@ function App() {
       {
           isValidBudget && (
             <>
-              <main>
+              <main className="py-4 mt-8 mx-auto">
                 <ExpenseList expenses = {expenses}/>
               </main>
               <div className="p-2 w-14 fixed right-0 bottom-0 hover: cursor-pointer" onClick={openModal}>
