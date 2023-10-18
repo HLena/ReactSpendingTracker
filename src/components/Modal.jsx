@@ -2,7 +2,12 @@ import { useState } from 'react';
 import { CgClose } from 'react-icons/cg';
 import Message from './Message';
 
-const Modal = ({onClose, onSaveExpense, availableBudget}) => {
+const Modal = ({
+    onClose,
+    onSaveExpense,
+    totalExpenses,
+    budget
+}) => {
 
     const initialForm = {
         name: '',
@@ -10,7 +15,7 @@ const Modal = ({onClose, onSaveExpense, availableBudget}) => {
         category: ''
     }
 
-    const budget = availableBudget();
+    const availableBudget = budget - totalExpenses;
     const [form, setForm] = useState(initialForm);
     const [message, setMessage] = useState('');
 
@@ -28,7 +33,7 @@ const Modal = ({onClose, onSaveExpense, availableBudget}) => {
             setMessage('Todos lo campos son obligatorios')
             return;
             
-        } else if( budget < form.quantity) {
+        } else if( availableBudget < form.quantity) {
             setMessage('La cantidad supera el presupuesto actual')
             return;
         } 

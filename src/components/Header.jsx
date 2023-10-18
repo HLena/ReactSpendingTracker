@@ -4,7 +4,8 @@ const Header = ({
   budget,
   setBudget,
   isValidBudget,
-  setIsValidBudget
+  setIsValidBudget,
+  totalExpenses
 }) => {
   return (
     <header className="bg-teal-500 h-3/6 relative flex justify-center text-gray-700">
@@ -17,7 +18,9 @@ const Header = ({
               setBudget={setBudget}
               setIsValidBudget = { setIsValidBudget }
             />
-          : <ControlBudget budget={budget}/>
+          : <ControlBudget 
+              budget={budget}  
+              totalExpenses={totalExpenses}/>
         }
     </header>
   )
