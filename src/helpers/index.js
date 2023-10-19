@@ -5,9 +5,17 @@ export const generateId = () => {
 }
 
 export const formatDate = (date) => {
-    return date.toLocaleDateString('es-ES', {
+    const newDate = (typeof date === 'string' ) ? new Date(date): date;
+    return newDate.toLocaleDateString('es-ES', {
         year: 'numeric',
         month: 'long',
         day: '2-digit'
       })
 }
+
+export const formatQuantity = (quantity) => {
+    return quantity.toLocaleString('en-US',{
+        style: 'currency',
+        currency: 'USD'
+    })
+};
