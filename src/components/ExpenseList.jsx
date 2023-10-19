@@ -1,11 +1,19 @@
 import Expense from "./Expense"
 
-const ExpenseList = ({ expenses }) => {
+const ExpenseList = ({ expenses, setEditExpense, setDeleteExpense, filter}) => {
   return (
     <>
         {
-            expenses.map((expense) => 
-                <Expense key={expense.id} expense={expense}/>
+            expenses?.map((expense) => {
+              if(filter == expense.category || filter == '') {
+                return <Expense 
+                  key={expense.id} 
+                  expense={expense} 
+                  setEditExpense={setEditExpense}
+                  setDeleteExpense={setDeleteExpense}
+                />
+              } 
+            }
             )
         }
     </>
