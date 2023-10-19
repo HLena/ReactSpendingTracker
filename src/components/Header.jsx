@@ -5,10 +5,19 @@ const Header = ({
   setBudget,
   isValidBudget,
   setIsValidBudget,
-  totalExpenses
+  totalExpenses,
+  porcent,
+  setExpenses
 }) => {
+
+  const resetApp = () => {
+    setBudget(0);
+    setIsValidBudget(false)
+    setExpenses([])
+  }
+
   return (
-    <header className="bg-teal-500 h-3/6 relative flex justify-center text-gray-700">
+    <header className="bg-teal-500 h-3/4 sm:h-1/2 relative flex justify-center text-gray-700">
         <h1 className="py-12 text-2xl uppercase text-white">Planificador de gastos</h1>
         {
           !isValidBudget
@@ -19,8 +28,11 @@ const Header = ({
               setIsValidBudget = { setIsValidBudget }
             />
           : <ControlBudget 
+              porcent = {porcent}
               budget={budget}  
-              totalExpenses={totalExpenses}/>
+              totalExpenses={totalExpenses}
+              resetApp = {resetApp}
+            />
         }
     </header>
   )
