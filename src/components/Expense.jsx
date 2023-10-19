@@ -10,7 +10,7 @@ import {
 import 'react-swipeable-list/dist/styles.css';
 
 
-const Expense = ({expense}) => {
+const Expense = ({expense, setEditExpense, setDeleteExpense}) => {
 
   const { category, name, quantity, date} = expense;
   const image = `/src/img/icono_${category}.svg`;
@@ -19,7 +19,7 @@ const Expense = ({expense}) => {
     <LeadingActions>
       <SwipeAction 
         className="border"
-        onClick={() => console.info('swipe action triggered')}>
+        onClick={() => setEditExpense(expense)}>
         Editar
       </SwipeAction>
     </LeadingActions>
@@ -30,7 +30,7 @@ const Expense = ({expense}) => {
       <SwipeAction
         // destructive={true}
         className="border"
-        onClick={() => console.info('swipe action triggered')}
+        onClick={() => setDeleteExpense(expense.id)}
       >
         Eliminar
       </SwipeAction>

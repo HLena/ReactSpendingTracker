@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import { Children, useState } from 'react';
 import { CgClose } from 'react-icons/cg';
 import Message from './Message';
 
 const Modal = ({
     onClose,
-    onSaveExpense,
+    onAddExpense,
+    onEditExpense,
     totalExpenses,
-    budget
+    budget,
+    editExpense
 }) => {
 
     const initialForm = {
@@ -15,8 +17,9 @@ const Modal = ({
         category: ''
     }
 
-    const availableBudget = budget - totalExpenses;
-    const [form, setForm] = useState(initialForm);
+    const availableBudget = budget - totalExpenses + Number(editExpense ? editExpense?.quantity : 0); 
+    
+    const [form, setForm] = useState(editExpense || initialForm);
     const [message, setMessage] = useState('');
 
     const handleChange = ({target}) => {
@@ -37,7 +40,9 @@ const Modal = ({
             setMessage('La cantidad supera el presupuesto actual')
             return;
         } 
-        onSaveExpense(form);
+
+        form?.id ? onEditExpense(form) : onAddExpense(form);
+
         setForm(initialForm);
         onClose();
 
@@ -54,7 +59,7 @@ const Modal = ({
 
                     <div className="relative overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all ease-in-out delay-150 p-4 w-11/12 sm:max-w-lg">
                         <CgClose className='absolute right-3 top-3 cursor-pointer' onClick={onClose}/>
-                        <legend className="text-base font-semibold leading-6 text-gray-900 mb-2" id="modal-title">Nuevo gasto</legend>
+                        <legend className="text-base font-semibold leading-6 text-gray-900 mb-2" id="modal-title">{form?.id ? 'Editar gasto': 'Nuevo gasto'}</legend>
                         {
                             message &&
                                 <Message type='error'>
@@ -103,7 +108,7 @@ const Modal = ({
                             </fieldset>
                             <input 
                                 type="submit" 
-                                value="Añadir gasto"
+                                value={form?.id ? 'Guardar gasto': 'Añadir gasto'}
                                 className="mt-2 rounded-md bg-teal-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-teal-600 cursor-pointer  w-full sm:w-auto"
                                 
                             />
